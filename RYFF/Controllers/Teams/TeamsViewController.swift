@@ -19,6 +19,7 @@ class TeamsViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		self.tableView.register(cellClass: TeamTableViewCell.self)
 		self.title = self.division.name
 	}
 	
@@ -27,13 +28,11 @@ class TeamsViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
+		let cell = tableView.dequeueReusableCell(withIdentifier: TeamTableViewCell.identifier, for: indexPath) as! TeamTableViewCell
 		let team = self.division.teams[indexPath.row]
 		
-		cell.textLabel?.text = team.name
-		
-		
-		cell.accessoryType = .disclosureIndicator
+		cell.team = team
+
 		return cell
 	}
 	

@@ -44,6 +44,8 @@
 		B5FF4ED820B0BC7800E99902 /* StandingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF4ED720B0BC7800E99902 /* StandingsViewController.swift */; };
 		B5FF4EDC20B0BF6200E99902 /* StandingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF4EDA20B0BF6200E99902 /* StandingsTableViewCell.swift */; };
 		B5FF4EDD20B0BF6200E99902 /* StandingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5FF4EDB20B0BF6200E99902 /* StandingsTableViewCell.xib */; };
+		B5FF4EE320B0E7BF00E99902 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF4EE120B0E7BF00E99902 /* TeamTableViewCell.swift */; };
+		B5FF4EE420B0E7BF00E99902 /* TeamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5FF4EE220B0E7BF00E99902 /* TeamTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -99,6 +101,8 @@
 		B5FF4ED720B0BC7800E99902 /* StandingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsViewController.swift; sourceTree = "<group>"; };
 		B5FF4EDA20B0BF6200E99902 /* StandingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsTableViewCell.swift; sourceTree = "<group>"; };
 		B5FF4EDB20B0BF6200E99902 /* StandingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StandingsTableViewCell.xib; sourceTree = "<group>"; };
+		B5FF4EE120B0E7BF00E99902 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
+		B5FF4EE220B0E7BF00E99902 /* TeamTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +179,7 @@
 			children = (
 				B5FF4ED120B080C500E99902 /* MainMenuViewController.swift */,
 				B5FF4ED320B0926000E99902 /* DivisionsViewController.swift */,
-				B5FF4ED520B092E000E99902 /* TeamsViewController.swift */,
+				B5FF4EE020B0E7AD00E99902 /* Teams */,
 				B5FF4ED920B0BF0B00E99902 /* Standings */,
 			);
 			path = Controllers;
@@ -227,6 +231,16 @@
 				B5FF4EDB20B0BF6200E99902 /* StandingsTableViewCell.xib */,
 			);
 			path = Standings;
+			sourceTree = "<group>";
+		};
+		B5FF4EE020B0E7AD00E99902 /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				B5FF4ED520B092E000E99902 /* TeamsViewController.swift */,
+				B5FF4EE120B0E7BF00E99902 /* TeamTableViewCell.swift */,
+				B5FF4EE220B0E7BF00E99902 /* TeamTableViewCell.xib */,
+			);
+			path = Teams;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5C1FF2020AEDAD000371108 /* Main.storyboard in Resources */,
+				B5FF4EE420B0E7BF00E99902 /* TeamTableViewCell.xib in Resources */,
 				B5FF4EDD20B0BF6200E99902 /* StandingsTableViewCell.xib in Resources */,
 				B5C1FF1E20AEDAD000371108 /* Assets.xcassets in Resources */,
 				B5C1FF1F20AEDAD000371108 /* LaunchScreen.storyboard in Resources */,
@@ -306,6 +321,7 @@
 				B5E4AD2820B030FB00710197 /* ScheduledGame.swift in Sources */,
 				B5FF4ED820B0BC7800E99902 /* StandingsViewController.swift in Sources */,
 				B5FF4ED420B0926000E99902 /* DivisionsViewController.swift in Sources */,
+				B5FF4EE320B0E7BF00E99902 /* TeamTableViewCell.swift in Sources */,
 				B5E4AD1E20B02ABF00710197 /* DataStore.swift in Sources */,
 				B5E4AD2120B02AD500710197 /* Division.swift in Sources */,
 				B5E4AD2A20B0348700710197 /* Errors.swift in Sources */,
