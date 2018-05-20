@@ -18,9 +18,11 @@ struct Division: Codable, Equatable, Comparable, CustomStringConvertible {
 				completion(payload.divisions)
 			} catch {
 				ErrorHandler.instance.handle(error, note: "decoding divisions")
+				completion([])
 			}
 		}.error { conn, error in
 			ErrorHandler.instance.handle(error, note: "downloading divisions")
+			completion([])
 		}
 	}
 	

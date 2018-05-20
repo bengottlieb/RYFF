@@ -80,9 +80,11 @@ extension Division {
 				completion(payload.standings)
 			} catch {
 				ErrorHandler.instance.handle(error, note: "decoding standings")
+				completion([])
 			}
-			}.error { conn, error in
-				ErrorHandler.instance.handle(error, note: "downloading standings")
+		}.error { conn, error in
+			ErrorHandler.instance.handle(error, note: "downloading standings")
+			completion([])
 		}
 	}
 }

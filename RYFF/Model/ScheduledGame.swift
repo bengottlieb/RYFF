@@ -54,9 +54,11 @@ extension Team {
 				completion(payload.games)
 			} catch {
 				ErrorHandler.instance.handle(error, note: "decoding schedule")
+				completion([])
 			}
 		}.error { conn, error in
 			ErrorHandler.instance.handle(error, note: "downloading schedule")
+			completion([])
 		}
 	}
 	

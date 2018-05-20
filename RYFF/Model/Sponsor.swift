@@ -19,9 +19,11 @@ struct Sponsor: Codable {
 				completion(payload.sponsors)
 			} catch {
 				ErrorHandler.instance.handle(error, note: "decoding sponsors")
+				completion([])
 			}
 		}.error { conn, error in
 			ErrorHandler.instance.handle(error, note: "downloading sponsors")
+			completion([])
 		}
 	}
 

@@ -16,7 +16,7 @@ class MainMenuViewController: UITableViewController {
 		}
 		var isAvailable: Bool {
 			switch self {
-			case .announcements: return true
+			case .announcements: return DataStore.instance.cache.hasAnnouncementData
 			case .schedule: return DataStore.instance.cache.hasFullScheduleData
 			case .standings: return DataStore.instance.cache.hasFullStandingsData
 			case .teams: return DataStore.instance.cache.hasDivisionData
@@ -34,6 +34,7 @@ class MainMenuViewController: UITableViewController {
 		DataStore.Notifications.scheduleDataAvailable.watch(self, message: #selector(scheduleDataAvailable))
 		DataStore.Notifications.standingDataAvailable.watch(self, message: #selector(standingsDataAvailable))
 		DataStore.Notifications.sponsorDataAvailable.watch(self, message: #selector(sponsorDataAvailable))
+		DataStore.Notifications.announcementDataAvailable.watch(self, message: #selector(announcementDataAvailable))
 
 		let imageView = UIImageView(image: UIImage(named: "nav_image"))
 		imageView.contentMode = .scaleAspectFit
@@ -56,6 +57,10 @@ class MainMenuViewController: UITableViewController {
 		self.tableView.reloadData()
 	}
 	
+	@objc func announcementDataAvailable(note: Notification) {
+		self.tableView.reloadData()
+	}
+
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		switch self.menuOptions[indexPath.row] {
 		case .teams:
