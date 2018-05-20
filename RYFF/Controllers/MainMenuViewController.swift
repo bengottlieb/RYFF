@@ -63,6 +63,9 @@ class MainMenuViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		switch self.menuOptions[indexPath.row] {
+		case .announcements:
+			self.navigationController?.pushViewController(AnnouncementsViewController(style: .plain), animated: true)
+			
 		case .teams:
 			self.navigationController?.pushViewController(DivisionsViewController(kind: .teams), animated: true)
 			

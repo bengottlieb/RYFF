@@ -51,6 +51,9 @@
 		B5FF4EE820B11E2F00E99902 /* SponsorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF4EE720B11E2F00E99902 /* SponsorsViewController.swift */; };
 		B5FF4EEC20B11EA800E99902 /* SponsorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF4EEA20B11EA800E99902 /* SponsorTableViewCell.swift */; };
 		B5FF4EED20B11EA800E99902 /* SponsorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5FF4EEB20B11EA800E99902 /* SponsorTableViewCell.xib */; };
+		B5FF4EEF20B1BA0E00E99902 /* AnnouncementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF4EEE20B1BA0E00E99902 /* AnnouncementsViewController.swift */; };
+		B5FF4EF320B1BA8000E99902 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF4EF120B1BA8000E99902 /* AnnouncementTableViewCell.swift */; };
+		B5FF4EF420B1BA8000E99902 /* AnnouncementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5FF4EF220B1BA8000E99902 /* AnnouncementTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -113,6 +116,9 @@
 		B5FF4EE720B11E2F00E99902 /* SponsorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorsViewController.swift; sourceTree = "<group>"; };
 		B5FF4EEA20B11EA800E99902 /* SponsorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorTableViewCell.swift; sourceTree = "<group>"; };
 		B5FF4EEB20B11EA800E99902 /* SponsorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorTableViewCell.xib; sourceTree = "<group>"; };
+		B5FF4EEE20B1BA0E00E99902 /* AnnouncementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewController.swift; sourceTree = "<group>"; };
+		B5FF4EF120B1BA8000E99902 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
+		B5FF4EF220B1BA8000E99902 /* AnnouncementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnouncementTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +195,7 @@
 			children = (
 				B5FF4ED120B080C500E99902 /* MainMenuViewController.swift */,
 				B5FF4ED320B0926000E99902 /* DivisionsViewController.swift */,
+				B5FF4EF020B1BA7000E99902 /* Announcements */,
 				B5FF4EE920B11E3700E99902 /* Sponsors */,
 				B5FF4EE020B0E7AD00E99902 /* Teams */,
 				B5FF4ED920B0BF0B00E99902 /* Standings */,
@@ -266,6 +273,16 @@
 			path = Sponsors;
 			sourceTree = "<group>";
 		};
+		B5FF4EF020B1BA7000E99902 /* Announcements */ = {
+			isa = PBXGroup;
+			children = (
+				B5FF4EEE20B1BA0E00E99902 /* AnnouncementsViewController.swift */,
+				B5FF4EF120B1BA8000E99902 /* AnnouncementTableViewCell.swift */,
+				B5FF4EF220B1BA8000E99902 /* AnnouncementTableViewCell.xib */,
+			);
+			path = Announcements;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -328,6 +345,7 @@
 				B5FF4EED20B11EA800E99902 /* SponsorTableViewCell.xib in Resources */,
 				B5C1FF2020AEDAD000371108 /* Main.storyboard in Resources */,
 				B5FF4EE420B0E7BF00E99902 /* TeamTableViewCell.xib in Resources */,
+				B5FF4EF420B1BA8000E99902 /* AnnouncementTableViewCell.xib in Resources */,
 				B5FF4EDD20B0BF6200E99902 /* StandingsTableViewCell.xib in Resources */,
 				B5C1FF1E20AEDAD000371108 /* Assets.xcassets in Resources */,
 				B5C1FF1F20AEDAD000371108 /* LaunchScreen.storyboard in Resources */,
@@ -349,6 +367,7 @@
 				B5FF4EE320B0E7BF00E99902 /* TeamTableViewCell.swift in Sources */,
 				B5E4AD1E20B02ABF00710197 /* DataStore.swift in Sources */,
 				B5E4AD2120B02AD500710197 /* Division.swift in Sources */,
+				B5FF4EF320B1BA8000E99902 /* AnnouncementTableViewCell.swift in Sources */,
 				B5E4AD2A20B0348700710197 /* Errors.swift in Sources */,
 				B5E4AD2520B02AF200710197 /* Server.swift in Sources */,
 				B5FF4EEC20B11EA800E99902 /* SponsorTableViewCell.swift in Sources */,
@@ -358,6 +377,7 @@
 				B5E4AD2C20B0356B00710197 /* Standing.swift in Sources */,
 				B5FF4EE820B11E2F00E99902 /* SponsorsViewController.swift in Sources */,
 				B5E4AD2320B02ADD00710197 /* Team.swift in Sources */,
+				B5FF4EEF20B1BA0E00E99902 /* AnnouncementsViewController.swift in Sources */,
 				B5C1FF1D20AEDAD000371108 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
