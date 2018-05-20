@@ -18,6 +18,7 @@ class SponsorsViewController: UITableViewController {
 		
 		self.tableView.register(cellClass: SponsorTableViewCell.self)
 		self.title = "Sponsors"
+		self.tableView.rowHeight = 64
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +44,8 @@ class SponsorsViewController: UITableViewController {
 		guard let url = URL(string: sponsor.link_url) else { return }
 		let controller = SFSafariViewController(url: url)
 		
-		self.navigationController?.presentController(controller)
+		controller.title = sponsor.name
+		self.navigationController?.present(controller, animated: true, completion: nil)
 		
 	}
 	

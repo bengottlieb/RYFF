@@ -26,6 +26,7 @@ class SponsorTableViewCell: UITableViewCell {
 		self.nameLabel.text = sponsor.name
 		self.detailsLabel.text = sponsor.details
 
-		self.sponsorImageView.url = URL(string: sponsor.image_url)
+		let placeholder = UIImage(named: "placeholder_image")
+		self.sponsorImageView.set(url: URL(string: sponsor.image_url), placeholder: placeholder)
 	}
 }
