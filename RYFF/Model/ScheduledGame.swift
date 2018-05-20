@@ -44,7 +44,7 @@ struct ScheduledGame: Codable, Equatable, Comparable, CustomStringConvertible {
 }
 
 extension Team {
-	func fetchSchedule(completion: @escaping ([ScheduledGame]) -> Void) {
+	func fetchSchedule(completion: @escaping ([ScheduledGame]?) -> Void) {
 		let url = Server.instance.buildURL(for: "games", ["team_id": self.id, "division_id": self.division])
 		Connection(url: url)!.completion { conn, data in
 			do {
@@ -54,11 +54,11 @@ extension Team {
 				completion(payload.games)
 			} catch {
 				ErrorHandler.instance.handle(error, note: "decoding schedule")
-				completion([])
+				completion(nil)
 			}
 		}.error { conn, error in
 			ErrorHandler.instance.handle(error, note: "downloading schedule")
-			completion([])
+			completion(nil)
 		}
 	}
 	

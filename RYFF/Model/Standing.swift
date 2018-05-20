@@ -72,7 +72,7 @@ struct Standing: Codable, Equatable, Comparable, CustomStringConvertible {
 }
 
 extension Division {
-	func fetchStandings(completion: @escaping ([Standing]) -> Void) {
+	func fetchStandings(completion: @escaping ([Standing]?) -> Void) {
 		let url = Server.instance.buildURL(for: "standings", ["division_id": self.id])
 		Connection(url: url)!.completion { conn, data in
 			do {
@@ -80,11 +80,11 @@ extension Division {
 				completion(payload.standings)
 			} catch {
 				ErrorHandler.instance.handle(error, note: "decoding standings")
-				completion([])
+				completion(nil)
 			}
 		}.error { conn, error in
 			ErrorHandler.instance.handle(error, note: "downloading standings")
-			completion([])
+			completion(nil)
 		}
 	}
 }

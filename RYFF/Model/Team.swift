@@ -8,11 +8,12 @@
 
 import Foundation
 
-struct Team: Codable, Equatable, Comparable, CustomStringConvertible {
+struct Team: IDBasedItem, Codable, Equatable, Comparable, CustomStringConvertible {
 	var id: String
 	var logo: String
 	var division: String
 	var name: String
+	var scheduleCachedAt: Date?
 	
 	var description: String { return "\(self.name) (\(self.id))" }
 	

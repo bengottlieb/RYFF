@@ -11,7 +11,7 @@ import Plug
 
 
 struct Sponsor: Codable {
-	static func fetch(completion: @escaping ([Sponsor]) -> Void) {
+	static func fetch(completion: @escaping ([Sponsor]?) -> Void) {
 		let url = Server.instance.buildURL(for: "sponsors")
 		Connection(url: url)!.completion { conn, data in
 			do {
@@ -19,11 +19,11 @@ struct Sponsor: Codable {
 				completion(payload.sponsors)
 			} catch {
 				ErrorHandler.instance.handle(error, note: "decoding sponsors")
-				completion([])
+				completion(nil)
 			}
 		}.error { conn, error in
 			ErrorHandler.instance.handle(error, note: "downloading sponsors")
-			completion([])
+			completion(nil)
 		}
 	}
 

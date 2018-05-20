@@ -9,13 +9,13 @@
 import Foundation
 import Plug
 
-struct Announcement: Codable {
-	let id: String
+struct Announcement: IDBasedItem, Codable {
+	var id: String
 	let dt: Date
 	let title: String
 	let content: String
 
-	static func fetch(completion: @escaping ([Announcement]) -> Void) {
+	static func fetch(completion: @escaping ([Announcement]?) -> Void) {
 		let url = Server.instance.buildURL(for: "announcements")
 		Connection(url: url)!.completion { conn, data in
 			do {
@@ -25,11 +25,11 @@ struct Announcement: Codable {
 				completion(payload.announcements)
 			} catch {
 				ErrorHandler.instance.handle(error, note: "decoding announcements")
-				completion([])
+				completion(nil)
 			}
 		}.error { conn, error in
 			ErrorHandler.instance.handle(error, note: "downloading announcements")
-			completion([])
+			completion(nil)
 		}
 	}
 	
