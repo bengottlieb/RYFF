@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SponsorTableViewCell" customModule="RYFF" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ale-Kc-hww">
+                        <rect key="frame" x="44" y="2" width="266" height="24.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0tG-yz-nGo" customClass="HoardImageView" customModule="Hoard">
+                        <rect key="frame" x="1" y="1" width="42" height="42"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="42" id="GHz-2Z-raI"/>
+                            <constraint firstAttribute="width" constant="42" id="QoX-wC-X9f"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8l-sd-PvK">
+                        <rect key="frame" x="44" y="26" width="266" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="V8l-sd-PvK" secondAttribute="bottom" constant="0.5" id="0Ra-68-Ppm"/>
+                    <constraint firstItem="ale-Kc-hww" firstAttribute="leading" secondItem="0tG-yz-nGo" secondAttribute="trailing" constant="1" id="54r-vM-TIt"/>
+                    <constraint firstItem="0tG-yz-nGo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="AsC-6c-udt"/>
+                    <constraint firstAttribute="bottom" secondItem="0tG-yz-nGo" secondAttribute="bottom" constant="1" id="BCL-WK-Lgq"/>
+                    <constraint firstItem="V8l-sd-PvK" firstAttribute="top" secondItem="ale-Kc-hww" secondAttribute="bottom" constant="-0.5" id="Fsd-ds-hyP"/>
+                    <constraint firstItem="V8l-sd-PvK" firstAttribute="leading" secondItem="ale-Kc-hww" secondAttribute="leading" id="HTK-AR-4id"/>
+                    <constraint firstItem="ale-Kc-hww" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="do7-W5-xt3"/>
+                    <constraint firstItem="V8l-sd-PvK" firstAttribute="trailing" secondItem="ale-Kc-hww" secondAttribute="trailing" id="fyf-yC-voO"/>
+                    <constraint firstItem="0tG-yz-nGo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="s6d-bc-g5X"/>
+                    <constraint firstAttribute="trailing" secondItem="ale-Kc-hww" secondAttribute="trailing" constant="10" id="v3v-R4-rgX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="detailsLabel" destination="V8l-sd-PvK" id="BgI-UD-PFe"/>
+                <outlet property="nameLabel" destination="ale-Kc-hww" id="IhD-bt-Z37"/>
+                <outlet property="sponsorImageView" destination="0tG-yz-nGo" id="pqc-GA-DI4"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

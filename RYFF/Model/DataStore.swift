@@ -14,6 +14,7 @@ class DataStore {
 		static let divisionDataAvailable = Notifier("divisionDataAvailable")
 		static let scheduleDataAvailable = Notifier("scheduleDataAvailable")
 		static let standingDataAvailable = Notifier("standingDataAvailable")
+		static let sponsorDataAvailable = Notifier("sponsorDataAvailable")
 	}
 	static let instance = DataStore()
 	
@@ -33,6 +34,15 @@ class DataStore {
 			Division.fetch { divisions in
 				self.cache.divisions = divisions
 				Notifications.divisionDataAvailable.notify()
+				self.fillCache()
+			}
+			return
+		}
+		
+		if !self.cache.hasSponsorData {
+			Sponsor.fetch { sponsors in
+				self.cache.sponsors = sponsors
+				Notifications.sponsorDataAvailable.notify()
 				self.fillCache()
 			}
 			return
@@ -73,6 +83,7 @@ class DataStore {
 	
 	struct Cache: Codable {
 		var hasDivisionData: Bool { return self.divisions.count > 0 }
+		var hasSponsorData: Bool { return self.sponsors.count > 0 }
 		var hasStandingsData: Bool { return self.divisionStandings.count > 0 }
 		var hasScheduleData: Bool { return self.divisionStandings.count > 0 }
 
@@ -82,7 +93,8 @@ class DataStore {
 		var divisions: [Division] = []
 		var divisionStandings: [String: [Standing]] = [:]
 		var teamSchedules: [String: [ScheduledGame]] = [:]
-		
+		var sponsors: [Sponsor] = []
+
 		var numberOfTeams: Int { return self.divisions.reduce(0) { $0 + $1.teams.count }}
 	}
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class MainMenuViewController: UITableViewController {
-	enum Option: String { case announcements, schedule, standings, teams
+	enum Option: String { case announcements, schedule, standings, teams, sponsors
 		var title: String { return self.rawValue.capitalized }
 		var image: UIImage? {
 			return UIImage(named: self.rawValue)
@@ -20,11 +20,12 @@ class MainMenuViewController: UITableViewController {
 			case .schedule: return DataStore.instance.cache.hasFullScheduleData
 			case .standings: return DataStore.instance.cache.hasFullStandingsData
 			case .teams: return DataStore.instance.cache.hasDivisionData
+			case .sponsors: return DataStore.instance.cache.hasSponsorData
 			}
 		}
 	}
 	
-	var menuOptions: [Option] = [.announcements, .schedule, .standings, .teams]
+	var menuOptions: [Option] = [.announcements, .schedule, .standings, .teams, .sponsors]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -32,6 +33,7 @@ class MainMenuViewController: UITableViewController {
 		DataStore.Notifications.divisionDataAvailable.watch(self, message: #selector(divisionDataAvailable))
 		DataStore.Notifications.scheduleDataAvailable.watch(self, message: #selector(scheduleDataAvailable))
 		DataStore.Notifications.standingDataAvailable.watch(self, message: #selector(standingsDataAvailable))
+		DataStore.Notifications.sponsorDataAvailable.watch(self, message: #selector(sponsorDataAvailable))
 
 		let imageView = UIImageView(image: UIImage(named: "nav_image"))
 		imageView.contentMode = .scaleAspectFit
@@ -50,6 +52,10 @@ class MainMenuViewController: UITableViewController {
 		self.tableView.reloadData()
 	}
 	
+	@objc func sponsorDataAvailable(note: Notification) {
+		self.tableView.reloadData()
+	}
+	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		switch self.menuOptions[indexPath.row] {
 		case .teams:
@@ -57,6 +63,9 @@ class MainMenuViewController: UITableViewController {
 			
 		case .standings:
 			self.navigationController?.pushViewController(DivisionsViewController(kind: .standings), animated: true)
+			
+		case .sponsors:
+			self.navigationController?.pushViewController(SponsorsViewController(style: .plain), animated: true)
 			
 		default: break
 		}
