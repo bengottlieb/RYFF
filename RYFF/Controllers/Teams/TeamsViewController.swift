@@ -9,10 +9,12 @@
 import UIKit
 
 class TeamsViewController: UITableViewController {
+	var kind: DivisionsViewController.Kind = .teams
 	var division: Division!
 	
-	convenience init(division: Division) {
+	convenience init(division: Division, kind: DivisionsViewController.Kind) {
 		self.init(style: .plain)
+		self.kind = kind
 		self.division = division
 	}
 	
@@ -32,11 +34,20 @@ class TeamsViewController: UITableViewController {
 		let team = self.division.teams[indexPath.row]
 		
 		cell.team = team
+		if self.kind == .teams {
+			cell.selectionStyle = .none
+		}
 
 		return cell
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		if self.kind == .schedule {
+			let team = self.division.teams[indexPath.row]
+			let controller = ScheduleViewController(team: team)
+			
+			self.navigationController?.pushViewController(controller, animated: true)
+		}
 
 	}
 	

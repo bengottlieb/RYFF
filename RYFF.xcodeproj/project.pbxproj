@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50F409420B2188600E1966D /* SchdeuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F409320B2188600E1966D /* SchdeuleViewController.swift */; };
+		B50F409820B21A2700E1966D /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F409620B21A2700E1966D /* ScheduleTableViewCell.swift */; };
+		B50F409920B21A2700E1966D /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B50F409720B21A2700E1966D /* ScheduleTableViewCell.xib */; };
+		B50F409C20B239C800E1966D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F409A20B239C800E1966D /* MapViewController.swift */; };
+		B50F409D20B239C800E1966D /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B50F409B20B239C800E1966D /* MapViewController.xib */; };
 		B5C1FF1D20AEDAD000371108 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1FF1320AEDAD000371108 /* AppDelegate.swift */; };
 		B5C1FF1E20AEDAD000371108 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C1FF1520AEDAD000371108 /* Assets.xcassets */; };
 		B5C1FF1F20AEDAD000371108 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5C1FF1620AEDAD000371108 /* LaunchScreen.storyboard */; };
@@ -80,6 +85,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B50F409320B2188600E1966D /* SchdeuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchdeuleViewController.swift; sourceTree = "<group>"; };
+		B50F409620B21A2700E1966D /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		B50F409720B21A2700E1966D /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
+		B50F409A20B239C800E1966D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B50F409B20B239C800E1966D /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		B5C1FEFC20AEDA9400371108 /* RYFF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RYFF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C1FF1320AEDAD000371108 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5C1FF1520AEDAD000371108 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,6 +152,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B50F409520B219ED00E1966D /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				B50F409320B2188600E1966D /* SchdeuleViewController.swift */,
+				B50F409620B21A2700E1966D /* ScheduleTableViewCell.swift */,
+				B50F409720B21A2700E1966D /* ScheduleTableViewCell.xib */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		B50F409E20B239CC00E1966D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				B50F409A20B239C800E1966D /* MapViewController.swift */,
+				B50F409B20B239C800E1966D /* MapViewController.xib */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		B5C1FEF320AEDA9400371108 = {
 			isa = PBXGroup;
 			children = (
@@ -195,10 +224,12 @@
 			children = (
 				B5FF4ED120B080C500E99902 /* MainMenuViewController.swift */,
 				B5FF4ED320B0926000E99902 /* DivisionsViewController.swift */,
+				B50F409520B219ED00E1966D /* Schedule */,
 				B5FF4EF020B1BA7000E99902 /* Announcements */,
 				B5FF4EE920B11E3700E99902 /* Sponsors */,
 				B5FF4EE020B0E7AD00E99902 /* Teams */,
 				B5FF4ED920B0BF0B00E99902 /* Standings */,
+				B50F409E20B239CC00E1966D /* Map */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -344,7 +375,9 @@
 			files = (
 				B5FF4EED20B11EA800E99902 /* SponsorTableViewCell.xib in Resources */,
 				B5C1FF2020AEDAD000371108 /* Main.storyboard in Resources */,
+				B50F409920B21A2700E1966D /* ScheduleTableViewCell.xib in Resources */,
 				B5FF4EE420B0E7BF00E99902 /* TeamTableViewCell.xib in Resources */,
+				B50F409D20B239C800E1966D /* MapViewController.xib in Resources */,
 				B5FF4EF420B1BA8000E99902 /* AnnouncementTableViewCell.xib in Resources */,
 				B5FF4EDD20B0BF6200E99902 /* StandingsTableViewCell.xib in Resources */,
 				B5C1FF1E20AEDAD000371108 /* Assets.xcassets in Resources */,
@@ -361,11 +394,14 @@
 			files = (
 				B5FF4EE620B11C1F00E99902 /* Sponsor.swift in Sources */,
 				B5FF4ED620B092E000E99902 /* TeamsViewController.swift in Sources */,
+				B50F409820B21A2700E1966D /* ScheduleTableViewCell.swift in Sources */,
 				B5E4AD2820B030FB00710197 /* ScheduledGame.swift in Sources */,
 				B5FF4ED820B0BC7800E99902 /* StandingsViewController.swift in Sources */,
 				B5FF4ED420B0926000E99902 /* DivisionsViewController.swift in Sources */,
+				B50F409420B2188600E1966D /* SchdeuleViewController.swift in Sources */,
 				B5FF4EE320B0E7BF00E99902 /* TeamTableViewCell.swift in Sources */,
 				B5E4AD1E20B02ABF00710197 /* DataStore.swift in Sources */,
+				B50F409C20B239C800E1966D /* MapViewController.swift in Sources */,
 				B5E4AD2120B02AD500710197 /* Division.swift in Sources */,
 				B5FF4EF320B1BA8000E99902 /* AnnouncementTableViewCell.swift in Sources */,
 				B5E4AD2A20B0348700710197 /* Errors.swift in Sources */,

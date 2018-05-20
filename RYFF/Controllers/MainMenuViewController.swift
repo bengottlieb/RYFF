@@ -69,13 +69,14 @@ class MainMenuViewController: UITableViewController {
 		case .teams:
 			self.navigationController?.pushViewController(DivisionsViewController(kind: .teams), animated: true)
 			
+		case .schedule:
+			self.navigationController?.pushViewController(DivisionsViewController(kind: .schedule), animated: true)
+			
 		case .standings:
 			self.navigationController?.pushViewController(DivisionsViewController(kind: .standings), animated: true)
 			
 		case .sponsors:
 			self.navigationController?.pushViewController(SponsorsViewController(style: .plain), animated: true)
-			
-		default: break
 		}
 	}
 	

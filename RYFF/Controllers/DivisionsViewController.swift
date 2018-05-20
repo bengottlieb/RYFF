@@ -9,7 +9,7 @@
 import UIKit
 
 class DivisionsViewController: UITableViewController {
-	enum Kind { case teams, standings }
+	enum Kind { case teams, standings, schedule }
 	
 	var kind: Kind = .teams
 	convenience init(kind: Kind) {
@@ -33,7 +33,6 @@ class DivisionsViewController: UITableViewController {
 		
 		cell.textLabel?.text = div.name
 
-		
 		cell.accessoryType = .disclosureIndicator
 		return cell
 	}
@@ -43,11 +42,15 @@ class DivisionsViewController: UITableViewController {
 
 		switch self.kind {
 		case .teams:
-			let controller = TeamsViewController(division: div)
+			let controller = TeamsViewController(division: div, kind: self.kind)
 			self.navigationController?.pushViewController(controller, animated: true)
 			
 		case .standings:
 			let controller = StandingsViewController(division: div)
+			self.navigationController?.pushViewController(controller, animated: true)
+			
+		case .schedule:
+			let controller = TeamsViewController(division: div, kind: self.kind)
 			self.navigationController?.pushViewController(controller, animated: true)
 		}
 	}

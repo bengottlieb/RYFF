@@ -16,7 +16,6 @@ class TeamTableViewCell: UITableViewCell {
 	var team: Team? { didSet { self.updateUI() }}
 
 	override func awakeFromNib() {
-		self.selectionStyle = .none
 	}
 	
 	func updateUI() {
