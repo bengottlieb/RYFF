@@ -132,10 +132,27 @@ class DataStore {
 		}
 	}
 	
+	func details(for team: Team, completion: @escaping (TeamDetails?) -> Void) -> TeamDetails? {
+		if let details = self.cache.teamDetails[team.id] {
+			completion(details)
+			return details
+		}
+		
+		team.fetchInfo { details in
+			self.cache.teamDetails[team.id] = details
+			self.queueCacheSave()
+			completion(details)
+		}
+		
+		return nil
+	}
+	
 	struct Cache: Codable {
 		var divisionsCachedAt: Date?
 		var sponsorsCachedAt: Date?
 		var announcementsCachedAt: Date?
+		
+		var teamDetails: [String: TeamDetails] = [:]
 		
 		var hasDivisionData: Bool { return self.divisions.count > 0 }
 		var hasSponsorData: Bool { return self.sponsors.count > 0 }

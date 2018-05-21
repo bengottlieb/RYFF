@@ -21,7 +21,7 @@ class TeamTableViewCell: UITableViewCell {
 	func updateUI() {
 		guard let team = self.team else { return }
 		
-		self.nameLabel.text = team.name
+		self.nameLabel.text = team.nameOnly
 		
 		self.teamImageView.url = URL(string: team.logo)
 	}

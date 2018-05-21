@@ -15,6 +15,12 @@ struct Team: IDBasedItem, Codable, Equatable, Comparable, CustomStringConvertibl
 	var name: String
 	var scheduleCachedAt: Date?
 	
+	var nameOnly: String {
+		let components = self.name.components(separatedBy: "(")
+		
+		return components.first?.trimmingCharacters(in: .whitespaces) ?? self.name
+	}
+	
 	var description: String { return "\(self.name) (\(self.id))" }
 	
 	static func ==(lhs: Team, rhs: Team) -> Bool {

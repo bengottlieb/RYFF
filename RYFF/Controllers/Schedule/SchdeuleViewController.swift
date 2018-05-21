@@ -23,7 +23,7 @@ class ScheduleViewController: UITableViewController {
 		
 		self.tableView.rowHeight = 100
 		self.tableView.register(cellClass: ScheduleTableViewCell.self)
-		self.title = self.team.name
+		self.title = self.team.nameOnly + " Schedule"
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

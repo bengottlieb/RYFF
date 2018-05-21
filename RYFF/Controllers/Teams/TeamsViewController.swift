@@ -34,19 +34,26 @@ class TeamsViewController: UITableViewController {
 		let team = self.division.teams[indexPath.row]
 		
 		cell.team = team
-		if self.kind == .teams {
-			cell.selectionStyle = .none
-		}
+		cell.accessoryType = .disclosureIndicator
 
 		return cell
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		if self.kind == .schedule {
-			let team = self.division.teams[indexPath.row]
+		let team = self.division.teams[indexPath.row]
+
+		switch self.kind {
+		case .teams:
+			let controller = TeamDetailsViewController.controller(with: team)
+			
+			self.navigationController?.pushViewController(controller, animated: true)
+
+		case .schedule:
 			let controller = ScheduleViewController(team: team)
 			
 			self.navigationController?.pushViewController(controller, animated: true)
+			
+		default: break
 		}
 
 	}
