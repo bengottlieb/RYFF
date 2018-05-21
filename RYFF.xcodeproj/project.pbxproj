@@ -47,6 +47,8 @@
 		B5E4AD2A20B0348700710197 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E4AD2920B0348700710197 /* Errors.swift */; };
 		B5E4AD2C20B0356B00710197 /* Standing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E4AD2B20B0356B00710197 /* Standing.swift */; };
 		B5E4AD2E20B18E7400710197 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E4AD2D20B18E7400710197 /* Announcement.swift */; };
+		B5E4AD3120B2DC5500710197 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E4AD2F20B2DC5500710197 /* LoadingTableViewCell.swift */; };
+		B5E4AD3220B2DC5500710197 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5E4AD3020B2DC5500710197 /* LoadingTableViewCell.xib */; };
 		B5FF4ED220B080C500E99902 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF4ED120B080C500E99902 /* MainMenuViewController.swift */; };
 		B5FF4ED420B0926000E99902 /* DivisionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF4ED320B0926000E99902 /* DivisionsViewController.swift */; };
 		B5FF4ED620B092E000E99902 /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF4ED520B092E000E99902 /* TeamsViewController.swift */; };
@@ -120,6 +122,8 @@
 		B5E4AD2920B0348700710197 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		B5E4AD2B20B0356B00710197 /* Standing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Standing.swift; sourceTree = "<group>"; };
 		B5E4AD2D20B18E7400710197 /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
+		B5E4AD2F20B2DC5500710197 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
+		B5E4AD3020B2DC5500710197 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		B5FF4ED120B080C500E99902 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainMenuViewController.swift; path = RYFF/Controllers/MainMenuViewController.swift; sourceTree = SOURCE_ROOT; };
 		B5FF4ED320B0926000E99902 /* DivisionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionsViewController.swift; sourceTree = "<group>"; };
 		B5FF4ED520B092E000E99902 /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 				B5C1FF1B20AEDAD000371108 /* Controllers */,
 				B5E4AD1F20B02AC400710197 /* Model */,
 				B5E4AD2620B02AF600710197 /* Comms */,
+				B5E4AD3320B2DC5900710197 /* UI Elements */,
 			);
 			path = RYFF;
 			sourceTree = "<group>";
@@ -289,6 +294,23 @@
 				B5E4AD2420B02AF200710197 /* Server.swift */,
 			);
 			path = Comms;
+			sourceTree = "<group>";
+		};
+		B5E4AD3320B2DC5900710197 /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				B5E4AD3420B2DC6400710197 /* Loading Cell */,
+			);
+			path = "UI Elements";
+			sourceTree = "<group>";
+		};
+		B5E4AD3420B2DC6400710197 /* Loading Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B5E4AD2F20B2DC5500710197 /* LoadingTableViewCell.swift */,
+				B5E4AD3020B2DC5500710197 /* LoadingTableViewCell.xib */,
+			);
+			path = "Loading Cell";
 			sourceTree = "<group>";
 		};
 		B5FF4ED920B0BF0B00E99902 /* Standings */ = {
@@ -390,6 +412,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5E4AD3220B2DC5500710197 /* LoadingTableViewCell.xib in Resources */,
 				B5FF4EED20B11EA800E99902 /* SponsorTableViewCell.xib in Resources */,
 				B5C1FF2020AEDAD000371108 /* Main.storyboard in Resources */,
 				B50F409920B21A2700E1966D /* ScheduleTableViewCell.xib in Resources */,
@@ -426,6 +449,7 @@
 				B5E4AD2520B02AF200710197 /* Server.swift in Sources */,
 				B5FF4EEC20B11EA800E99902 /* SponsorTableViewCell.swift in Sources */,
 				B5FF4ED220B080C500E99902 /* MainMenuViewController.swift in Sources */,
+				B5E4AD3120B2DC5500710197 /* LoadingTableViewCell.swift in Sources */,
 				B5E4AD2E20B18E7400710197 /* Announcement.swift in Sources */,
 				B5FF4EDC20B0BF6200E99902 /* StandingsTableViewCell.swift in Sources */,
 				B5E4AD2C20B0356B00710197 /* Standing.swift in Sources */,

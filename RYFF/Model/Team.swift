@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Team: IDBasedItem, Codable, Equatable, Comparable, CustomStringConvertible {
+struct Team: IDBasedItem, Cacheable, Codable, Equatable, Comparable, CustomStringConvertible {
 	var id: String
 	var logo: String
 	var division: String
 	var name: String
-	var scheduleCachedAt: Date?
+	var cachedAt: Date?
 	
 	var nameOnly: String {
 		let components = self.name.components(separatedBy: "(")

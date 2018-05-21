@@ -8,12 +8,27 @@
 
 import Foundation
 import Plug
+import Gulliver
 
 protocol IDBasedItem {
 	var id: String { get set }
 }
 
-struct Division: IDBasedItem, Codable, Equatable, Comparable, CustomStringConvertible {
+protocol Cacheable {
+	var cachedAt: Date? { get set }
+	var isStale: Bool { get }
+	var cacheLifetime: TimeInterval { get }
+}
+
+extension Cacheable {
+	var cacheLifetime: TimeInterval { return TimeInterval.secondsPerDay }
+	var isStale: Bool {
+		guard let cachedAt = self.cachedAt else { return true }
+		return abs(cachedAt.timeIntervalSinceNow) > self.cacheLifetime
+	}
+}
+
+struct Division: IDBasedItem, Cacheable, Codable, Equatable, Comparable, CustomStringConvertible {
 	static func fetch(completion: @escaping ([Division]?) -> Void) {
 		let url = Server.instance.buildURL(for: "division_teams")
 		Connection(url: url)!.completion { conn, data in
@@ -33,7 +48,7 @@ struct Division: IDBasedItem, Codable, Equatable, Comparable, CustomStringConver
 	var id: String
 	var name: String
 	var teams: [Team]
-	var standingsCachedAt: Date?
+	var cachedAt: Date?
 
 	var description: String { return "\(self.name) (\(self.id)): \(self.teams.map({$0.description}).joined(separator: ","))" }
 	

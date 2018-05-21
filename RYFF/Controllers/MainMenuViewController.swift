@@ -17,8 +17,8 @@ class MainMenuViewController: UITableViewController {
 		var isAvailable: Bool {
 			switch self {
 			case .announcements: return DataStore.instance.cache.hasAnnouncementData
-			case .schedule: return DataStore.instance.cache.hasFullScheduleData
-			case .standings: return DataStore.instance.cache.hasFullStandingsData
+			case .schedule: return DataStore.instance.cache.hasDivisionData
+			case .standings: return DataStore.instance.cache.hasDivisionData
 			case .teams: return DataStore.instance.cache.hasDivisionData
 			case .sponsors: return DataStore.instance.cache.hasSponsorData
 			}
@@ -31,8 +31,6 @@ class MainMenuViewController: UITableViewController {
 		super.viewDidLoad()
 		
 		DataStore.Notifications.divisionDataAvailable.watch(self, message: #selector(divisionDataAvailable))
-		DataStore.Notifications.scheduleDataAvailable.watch(self, message: #selector(scheduleDataAvailable))
-		DataStore.Notifications.standingDataAvailable.watch(self, message: #selector(standingsDataAvailable))
 		DataStore.Notifications.sponsorDataAvailable.watch(self, message: #selector(sponsorDataAvailable))
 		DataStore.Notifications.announcementDataAvailable.watch(self, message: #selector(announcementDataAvailable))
 
@@ -42,14 +40,6 @@ class MainMenuViewController: UITableViewController {
 	}
 	
 	@objc func divisionDataAvailable(note: Notification) {
-		self.tableView.reloadData()
-	}
-	
-	@objc func scheduleDataAvailable(note: Notification) {
-		self.tableView.reloadData()
-	}
-	
-	@objc func standingsDataAvailable(note: Notification) {
 		self.tableView.reloadData()
 	}
 	

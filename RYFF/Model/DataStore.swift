@@ -50,7 +50,8 @@ class DataStore {
 	}
 	
 	func fillCache() {
-		if !self.cache.hasDivisionData {
+		let maxDivisionCacheAge = TimeInterval.secondsPerDay * 30
+		if self.cache.divisionsCachedAt == nil || abs(self.cache.divisionsCachedAt!.timeIntervalSinceNow) > maxDivisionCacheAge {
 			Division.fetch { divisions in
 				if let divs = divisions {
 					self.cache.divisions = divs
@@ -63,7 +64,8 @@ class DataStore {
 			return
 		}
 		
-		if !self.cache.hasAnnouncementData {
+		let maxAnnouncementCacheAge = TimeInterval.secondsPerHour * 6
+		if self.cache.announcementsCachedAt == nil || abs(self.cache.announcementsCachedAt!.timeIntervalSinceNow) > maxAnnouncementCacheAge {
 			Announcement.fetch { announcements in
 				if let announce = announcements {
 					self.cache.announcementsCachedAt = Date()
@@ -76,7 +78,8 @@ class DataStore {
 			return
 		}
 		
-		if !self.cache.hasSponsorData {
+		let maxSponsorCacheAge = TimeInterval.secondsPerDay
+		if self.cache.sponsorsCachedAt == nil || abs(self.cache.sponsorsCachedAt!.timeIntervalSinceNow) > maxSponsorCacheAge {
 			Sponsor.fetch { sponsors in
 				if let spons = sponsors {
 					self.cache.sponsors = spons
@@ -89,51 +92,51 @@ class DataStore {
 			return
 		}
 		
-		if !self.cache.hasFullScheduleData {
-			for div in self.cache.divisions {
-				for team in div.teams {
-					if self.cache.teamSchedules[team.id] == nil {
-						team.fetchSchedule { schedule in
-							if let sched = schedule {
-								self.cache.divisions[div.id]?.teams[team.id]?.scheduleCachedAt = Date()
-								self.cache.teamSchedules[team.id] = sched
-								self.queueCacheSave()
-							}
-							self.fillCache()
-						}
-						return
-					}
-				}
-			}
-		}
-		if !self.hasUpdatedSchedules {
-			self.hasUpdatedSchedules = true
-			Notifications.scheduleDataAvailable.notify()
-		}
+//		if !self.cache.hasFullScheduleData {
+//			for div in self.cache.divisions {
+//				for team in div.teams {
+//					if self.cache.teamSchedules[team.id] == nil {
+//						team.fetchSchedule { schedule in
+//							if let sched = schedule {
+//								self.cache.divisions[div.id]?.teams[team.id]?.scheduleCachedAt = Date()
+//								self.cache.teamSchedules[team.id] = sched
+//								self.queueCacheSave()
+//							}
+//							self.fillCache()
+//						}
+//						return
+//					}
+//				}
+//			}
+//		}
+//		if !self.hasUpdatedSchedules {
+//			self.hasUpdatedSchedules = true
+//			Notifications.scheduleDataAvailable.notify()
+//		}
 
-		if !self.cache.hasFullStandingsData {
-			for div in self.cache.divisions {
-				if self.cache.divisionStandings[div.id] == nil {
-					div.fetchStandings { standings in
-						if let stand = standings {
-							self.cache.divisions[div.id]?.standingsCachedAt = Date()
-							self.cache.divisionStandings[div.id] = stand
-							self.queueCacheSave()
-						}
-						self.fillCache()
-					}
-					return
-				}
-			}
-		}
-		if !self.hasUpdatedStandings {
-			self.hasUpdatedStandings = true
-			Notifications.standingDataAvailable.notify()
-		}
+//		if !self.cache.hasFullStandingsData {
+//			for div in self.cache.divisions {
+//				if self.cache.divisionStandings[div.id] == nil {
+//					div.fetchStandings { standings in
+//						if let stand = standings {
+//							self.cache.divisions[div.id]?.standingsCachedAt = Date()
+//							self.cache.divisionStandings[div.id] = stand
+//							self.queueCacheSave()
+//						}
+//						self.fillCache()
+//					}
+//					return
+//				}
+//			}
+//		}
+//		if !self.hasUpdatedStandings {
+//			self.hasUpdatedStandings = true
+//			Notifications.standingDataAvailable.notify()
+//		}
 	}
 	
 	func details(for team: Team, completion: @escaping (TeamDetails?) -> Void) -> TeamDetails? {
-		if let details = self.cache.teamDetails[team.id] {
+		if let details = self.cache.teamDetails[team.id], !details.isStale {
 			completion(details)
 			return details
 		}
@@ -147,6 +150,38 @@ class DataStore {
 		return nil
 	}
 	
+	func schedule(for team: Team, completion: @escaping (TeamSchedule?) -> Void) -> TeamSchedule? {
+		if let schedule = self.cache.teamSchedules[team.id], !schedule.isStale {
+			completion(schedule)
+			return schedule
+		}
+		
+		team.fetchSchedule { sched in
+			self.cache.teamSchedules[team.id] = sched
+			self.cache.teamSchedules[team.id]?.cachedAt = Date()
+			self.queueCacheSave()
+			completion(sched)
+		}
+		
+		return nil
+	}
+	
+	func standings(for div: Division, completion: @escaping (DivisionStandings?) -> Void) -> DivisionStandings? {
+		if let standings = self.cache.divisionStandings[div.id], !standings.isStale {
+			completion(standings)
+			return standings
+		}
+		
+		div.fetchStandings { standings in
+			self.cache.divisionStandings[div.id] = standings
+			self.cache.divisionStandings[div.id]?.cachedAt = Date()
+			self.queueCacheSave()
+			completion(standings)
+		}
+		
+		return nil
+	}
+
 	struct Cache: Codable {
 		var divisionsCachedAt: Date?
 		var sponsorsCachedAt: Date?
@@ -164,8 +199,8 @@ class DataStore {
 		var hasFullScheduleData: Bool { return self.hasDivisionData && self.teamSchedules.count == self.numberOfTeams }
 		
 		var divisions: [Division] = []
-		var divisionStandings: [String: [Standing]] = [:]
-		var teamSchedules: [String: [ScheduledGame]] = [:]
+		var divisionStandings: [String: DivisionStandings] = [:]
+		var teamSchedules: [String: TeamSchedule] = [:]
 		var sponsors: [Sponsor] = []
 		var announcements: [Announcement] = []
 

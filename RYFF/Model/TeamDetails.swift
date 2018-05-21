@@ -10,7 +10,7 @@ import Foundation
 import Plug
 
 
-struct TeamDetails: Codable {
+struct TeamDetails: Codable, Cacheable {
 	let id: String
 	let name: String
 	let division_id: String
@@ -22,6 +22,8 @@ struct TeamDetails: Codable {
 	let coach_name: String
 	let coach_email: String
 	let coach_phone: String
+	var cachedAt: Date?
+	var cacheLifetime: TimeInterval { return TimeInterval.secondsPerDay }
 	
 	struct Payload: Codable {
 		let team_info: TeamDetails

@@ -37,21 +37,22 @@ struct ScheduledGame: Codable, Equatable, Comparable, CustomStringConvertible {
 	static func <(lhs: ScheduledGame, rhs: ScheduledGame) -> Bool {
 		return lhs.dt < rhs.dt
 	}
-	
-	struct Payload: Codable {
-		var games: [ScheduledGame]
-	}
+}
+
+struct TeamSchedule: Cacheable, Codable {
+	var cachedAt: Date?
+	var games: [ScheduledGame]
 }
 
 extension Team {
-	func fetchSchedule(completion: @escaping ([ScheduledGame]?) -> Void) {
+	func fetchSchedule(completion: @escaping (TeamSchedule?) -> Void) {
 		let url = Server.instance.buildURL(for: "games", ["team_id": self.id, "division_id": self.division])
 		Connection(url: url)!.completion { conn, data in
 			do {
 				let decoder = JSONDecoder()
 				decoder.dateDecodingStrategy = .formatted(DateFormatter.scheduleFormatter)
-				let payload = try decoder.decode(ScheduledGame.Payload.self, from: data.data)
-				completion(payload.games)
+				let payload = try decoder.decode(TeamSchedule.self, from: data.data)
+				completion(payload)
 			} catch {
 				ErrorHandler.instance.handle(error, note: "decoding schedule")
 				completion(nil)

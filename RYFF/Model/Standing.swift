@@ -65,19 +65,20 @@ struct Standing: Codable, Equatable, Comparable, CustomStringConvertible {
 	static func <(lhs: Standing, rhs: Standing) -> Bool {
 		return lhs.wins > rhs.wins
 	}
-	
-	struct Payload: Codable {
-		var standings: [Standing]
-	}
+}
+
+struct DivisionStandings: Cacheable, Codable {
+	var cachedAt: Date?
+	var standings: [Standing]
 }
 
 extension Division {
-	func fetchStandings(completion: @escaping ([Standing]?) -> Void) {
+	func fetchStandings(completion: @escaping (DivisionStandings?) -> Void) {
 		let url = Server.instance.buildURL(for: "standings", ["division_id": self.id])
 		Connection(url: url)!.completion { conn, data in
 			do {
-				let payload = try JSONDecoder().decode(Standing.Payload.self, from: data.data)
-				completion(payload.standings)
+				let payload = try JSONDecoder().decode(DivisionStandings.self, from: data.data)
+				completion(payload)
 			} catch {
 				ErrorHandler.instance.handle(error, note: "decoding standings")
 				completion(nil)

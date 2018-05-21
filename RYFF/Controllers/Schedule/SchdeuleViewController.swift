@@ -9,12 +9,14 @@
 import UIKit
 
 class ScheduleViewController: UITableViewController {
-	var schedule: [ScheduledGame] = []
+	var schedule: TeamSchedule? { didSet { DispatchQueue.main.async { self.tableView?.reloadData() }}}
 	var team: Team!
 	
 	convenience init(team: Team) {
 		self.init(style: .plain)
-		self.schedule = DataStore.instance.cache.teamSchedules[team.id] ?? []
+		self.schedule = DataStore.instance.schedule(for: team) { sched in
+			self.schedule = sched
+		}
 		self.team = team
 	}
 	
@@ -23,16 +25,21 @@ class ScheduleViewController: UITableViewController {
 		
 		self.tableView.rowHeight = 100
 		self.tableView.register(cellClass: ScheduleTableViewCell.self)
+		self.tableView.register(cellClass: LoadingTableViewCell.self)
 		self.title = self.team.nameOnly + " Schedule"
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.schedule.count
+		return self.schedule?.games.count ?? 1
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if self.schedule == nil {
+			return tableView.dequeueReusableCell(withIdentifier: LoadingTableViewCell.identifier, for: indexPath)
+		}
+
 		let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.identifier, for: indexPath) as! ScheduleTableViewCell
-		let scheduledGame = self.schedule[indexPath.row]
+		let scheduledGame = self.schedule?.games[indexPath.row]
 		
 		cell.scheduledGame = scheduledGame
 		
