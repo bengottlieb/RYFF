@@ -69,9 +69,9 @@ extension Team {
 extension DateFormatter {
 	static let scheduleFormatter: DateFormatter = {
 		let formatter = DateFormatter()
-		formatter.dateFormat = "MMM dd, yyyy, HH:mm a"
+		formatter.dateFormat = "MMM dd, yyyy, h:mm a"
 		formatter.calendar = Calendar(identifier: .iso8601)
-		formatter.timeZone = TimeZone(secondsFromGMT: 0)
+		formatter.timeZone = TimeZone.current
 		formatter.locale = Locale(identifier: "en_US_POSIX")
 		return formatter
 	}()
