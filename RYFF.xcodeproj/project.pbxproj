@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B502A1AE20B469540028B1FF /* StandingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502A1AD20B469540028B1FF /* StandingsHeaderView.swift */; };
+		B502A1B020B4696F0028B1FF /* StandingsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B502A1AF20B4696F0028B1FF /* StandingsHeaderView.xib */; };
 		B50F409420B2188600E1966D /* SchdeuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F409320B2188600E1966D /* SchdeuleViewController.swift */; };
 		B50F409820B21A2700E1966D /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F409620B21A2700E1966D /* ScheduleTableViewCell.swift */; };
 		B50F409920B21A2700E1966D /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B50F409720B21A2700E1966D /* ScheduleTableViewCell.xib */; };
@@ -90,6 +92,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B502A1AD20B469540028B1FF /* StandingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsHeaderView.swift; sourceTree = "<group>"; };
+		B502A1AF20B4696F0028B1FF /* StandingsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StandingsHeaderView.xib; sourceTree = "<group>"; };
 		B50F409320B2188600E1966D /* SchdeuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchdeuleViewController.swift; sourceTree = "<group>"; };
 		B50F409620B21A2700E1966D /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		B50F409720B21A2700E1966D /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
@@ -317,6 +321,8 @@
 			isa = PBXGroup;
 			children = (
 				B5FF4ED720B0BC7800E99902 /* StandingsViewController.swift */,
+				B502A1AD20B469540028B1FF /* StandingsHeaderView.swift */,
+				B502A1AF20B4696F0028B1FF /* StandingsHeaderView.xib */,
 				B5FF4EDA20B0BF6200E99902 /* StandingsTableViewCell.swift */,
 				B5FF4EDB20B0BF6200E99902 /* StandingsTableViewCell.xib */,
 			);
@@ -415,6 +421,7 @@
 				B5E4AD3220B2DC5500710197 /* LoadingTableViewCell.xib in Resources */,
 				B5FF4EED20B11EA800E99902 /* SponsorTableViewCell.xib in Resources */,
 				B5C1FF2020AEDAD000371108 /* Main.storyboard in Resources */,
+				B502A1B020B4696F0028B1FF /* StandingsHeaderView.xib in Resources */,
 				B50F409920B21A2700E1966D /* ScheduleTableViewCell.xib in Resources */,
 				B5FF4EE420B0E7BF00E99902 /* TeamTableViewCell.xib in Resources */,
 				B50F409D20B239C800E1966D /* MapViewController.xib in Resources */,
@@ -451,6 +458,7 @@
 				B5FF4ED220B080C500E99902 /* MainMenuViewController.swift in Sources */,
 				B5E4AD3120B2DC5500710197 /* LoadingTableViewCell.swift in Sources */,
 				B5E4AD2E20B18E7400710197 /* Announcement.swift in Sources */,
+				B502A1AE20B469540028B1FF /* StandingsHeaderView.swift in Sources */,
 				B5FF4EDC20B0BF6200E99902 /* StandingsTableViewCell.swift in Sources */,
 				B5E4AD2C20B0356B00710197 /* Standing.swift in Sources */,
 				B5FF4EE820B11E2F00E99902 /* SponsorsViewController.swift in Sources */,

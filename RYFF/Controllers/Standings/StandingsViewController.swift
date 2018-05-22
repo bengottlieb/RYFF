@@ -43,4 +43,12 @@ class StandingsViewController: UITableViewController {
 		cell.standing = self.standings?.standings[indexPath.row]
 		return cell
 	}
+	
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		return StandingsHeaderView.createHeaderView(in: tableView)
+	}
+	
+	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return StandingsHeaderView.height
+	}
 }
