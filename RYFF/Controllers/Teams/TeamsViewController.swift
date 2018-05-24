@@ -23,18 +23,23 @@ class TeamsViewController: UITableViewController {
 		self.teams = division.teams
 	}
 	
+	var searchController: UISearchController?
+	var searchContainer: UIView!
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		self.tableView.register(cellClass: TeamTableViewCell.self)
 		self.title = self.division.name
 		
-	//	self.searchResultsController = self
-		self.navigationItem.searchController = UISearchController(searchResultsController: nil)
-		self.navigationItem.searchController?.delegate = self
-		self.navigationItem.searchController?.searchResultsUpdater = self
-		self.navigationItem.searchController?.dimsBackgroundDuringPresentation = false
+		self.searchContainer = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 56))
+		self.searchController = UISearchController(searchResultsController: nil)
+		self.searchController?.delegate = self
+		self.searchController?.searchResultsUpdater = self
+		self.searchController?.dimsBackgroundDuringPresentation = false
 		self.definesPresentationContext = true
+		
+		self.searchContainer.addSubview(self.searchController!.searchBar)
+		self.tableView.tableHeaderView = self.searchContainer
 		
 	}
 	
