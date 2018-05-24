@@ -27,22 +27,32 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GrJ-ty-2KU">
-                        <rect key="frame" x="51.5" y="11.5" width="252.5" height="21"/>
+                        <rect key="frame" x="51.5" y="2.5" width="252.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMI-WY-DKW">
+                        <rect key="frame" x="52" y="22.5" width="252.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="DMI-WY-DKW" firstAttribute="leading" secondItem="GrJ-ty-2KU" secondAttribute="leading" id="DTV-9c-hjF"/>
                     <constraint firstAttribute="trailing" secondItem="GrJ-ty-2KU" secondAttribute="trailing" constant="16" id="Gzu-Vc-vob"/>
                     <constraint firstItem="GrJ-ty-2KU" firstAttribute="leading" secondItem="ev8-cz-BJ7" secondAttribute="trailing" constant="7.5" id="HCa-X5-jOO"/>
                     <constraint firstItem="ev8-cz-BJ7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="2" id="g2p-ny-4ez"/>
                     <constraint firstItem="ev8-cz-BJ7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hvl-oh-FXZ"/>
-                    <constraint firstItem="GrJ-ty-2KU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="r2X-O4-GOU"/>
+                    <constraint firstItem="DMI-WY-DKW" firstAttribute="trailing" secondItem="GrJ-ty-2KU" secondAttribute="trailing" id="qlI-Kb-cTa"/>
+                    <constraint firstItem="GrJ-ty-2KU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-8.75" id="r2X-O4-GOU"/>
+                    <constraint firstItem="DMI-WY-DKW" firstAttribute="top" secondItem="GrJ-ty-2KU" secondAttribute="bottom" constant="-1" id="sK6-tX-Z7F"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="coachLabel" destination="DMI-WY-DKW" id="2oJ-PB-EiH"/>
                 <outlet property="nameLabel" destination="GrJ-ty-2KU" id="nQM-y3-oUF"/>
                 <outlet property="teamImageView" destination="ev8-cz-BJ7" id="flU-5i-1gg"/>
             </connections>

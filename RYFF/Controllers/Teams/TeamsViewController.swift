@@ -83,7 +83,7 @@ extension TeamsViewController: UISearchResultsUpdating {
 	func updateSearchResults(for searchController: UISearchController) {
 		guard let text = searchController.searchBar.text?.lowercased(), !text.isEmpty else { return }
 		
-		let found = self.teams.filter { $0.nameOnly.lowercased().contains(text) }
+		let found = self.teams.filter { $0.name.lowercased().contains(text) }
 		
 		self.searchResults = found
 	}

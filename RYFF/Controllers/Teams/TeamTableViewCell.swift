@@ -11,6 +11,7 @@ import Hoard
 
 class TeamTableViewCell: UITableViewCell {
 	@IBOutlet var nameLabel: UILabel!
+	@IBOutlet var coachLabel: UILabel!
 	@IBOutlet var teamImageView: HoardImageView!
 
 	var team: Team? { didSet { self.updateUI() }}
@@ -22,7 +23,8 @@ class TeamTableViewCell: UITableViewCell {
 		guard let team = self.team else { return }
 		
 		self.nameLabel.text = team.nameOnly
-		
+		self.coachLabel.text = team.coachName
+
 		self.teamImageView.url = URL(string: team.logo)
 	}
 }
